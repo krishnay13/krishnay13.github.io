@@ -12,7 +12,10 @@
   --background: #f7faf7; /* light off‑white background */
   --text: #2d2d2d; /* dark grey text */
   --muted: #5f6f52; /* muted green for secondary text */
-  --accent: #c5e1a5; /* pale green for highlights */
+  /* A very pale green for subtle highlights (was #c5e1a5) */
+  --accent: #e5f3e8;
+  /* A soft surface colour for light sections and cards */
+  --surface: #f4faf4;
   --white: #ffffff;
   --shadow: rgba(0, 0, 0, 0.1);
   --transition-fast: 0.25s ease;
@@ -236,9 +239,12 @@ tbody tr:nth-child(even) {
 }
 
 /* Sustainability Section */
+/* Sustainability Section
+   We use a light neutral background here and subtle patterns. The pattern is
+   intentionally faint to avoid drawing attention away from the content. */
 .sustainability-section {
-  color: var(--white);
-  background: var(--primary);
+  background: var(--background);
+  color: var(--text);
   position: relative;
   overflow: hidden;
 }
@@ -251,7 +257,7 @@ tbody tr:nth-child(even) {
   background-image: url('assets/abstract.png');
   background-size: cover;
   background-position: center;
-  opacity: 0.15;
+  opacity: 0.05; /* very subtle pattern */
   z-index: 0;
 }
 .sustainability-section .section-header,
@@ -259,30 +265,32 @@ tbody tr:nth-child(even) {
   position: relative;
   z-index: 1;
 }
+/* Grid of highlights within sustainability section */
 .highlights {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.5rem;
   margin-top: 2rem;
 }
+/* Each highlight card uses a soft surface colour and dark text */
 .highlight {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--surface);
   padding: 1.5rem;
   border-radius: 8px;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  box-shadow: 0 4px 8px var(--shadow);
 }
 .highlight h3 {
-  color: var(--accent);
+  color: var(--primary);
   margin-bottom: 0.5rem;
 }
 .highlight p {
-  color: #e8f5e9;
+  color: var(--muted);
 }
 
 /* Team Section */
 .team-section {
-  background: var(--accent);
+  /* Use a light surface colour for the team section to avoid large colour blocks */
+  background: var(--surface);
 }
 .team-content {
   margin-top: 2rem;
@@ -334,7 +342,8 @@ tbody tr:nth-child(even) {
 
 /* Contact Section */
 .contact-section {
-  background: var(--white);
+  /* Match the main page background for a seamless flow */
+  background: var(--background);
 }
 .contact-card {
   display: flex;
@@ -342,7 +351,8 @@ tbody tr:nth-child(even) {
   justify-content: space-between;
   align-items: center;
   gap: 1.5rem;
-  background: var(--accent);
+  /* Use a light surface colour instead of the accent for cohesion */
+  background: var(--surface);
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 12px var(--shadow);
@@ -451,10 +461,4 @@ tbody tr:nth-child(even) {
   .team-grid {
     grid-template-columns: 1fr;
   }
-}
-
-/* Improve legibility in the Sustainability section */
-.sustainability-section .section-header h2,
-.sustainability-section .section-header p {
-  color: #ffffff; /* white text – change this to any color you prefer */
 }
