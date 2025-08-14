@@ -452,3 +452,9 @@ tbody tr:nth-child(even) {
     grid-template-columns: 1fr;
   }
 }
+
+/* Improve legibility in the Sustainability section */
+.sustainability-section .section-header h2,
+.sustainability-section .section-header p {
+  color: #ffffff; /* white text – change this to any color you prefer */
+}
